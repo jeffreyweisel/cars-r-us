@@ -1,0 +1,25 @@
+.choices {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-bottom: 30px;
+}
+
+.choices__options {
+    flex-basis: 24%;
+    margin: 0 2rem;
+    padding: 1rem;
+    border: 1px dotted goldenrod;
+}
+
+.orders {
+    display: flex;
+    flex-direction: column;
+
+}
+
+#savePackage {
+    width: 80px;
+    height: 50px;
+    background-color: goldenrod;
+}
