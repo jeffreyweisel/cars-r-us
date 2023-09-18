@@ -1,3 +1,5 @@
+import { setWheel } from "./TransientState.js"
+
 export const WheelOptions = async () => {
     const response = await fetch("http://localhost:8088/wheels")
     const wheels = await response.json()
@@ -24,7 +26,7 @@ export const WheelOptions = async () => {
 
 //Handles what happens when different metals are clicked    
 const handleWheelChange = (changeEvent) => {
-    if (changeEvent.target.name === "wheel") {
-        setMetal(parseInt(changeEvent.target.value))
+    if (changeEvent.target.id === "wheels") {
+        setWheel(parseInt(changeEvent.target.value))
     }
 }

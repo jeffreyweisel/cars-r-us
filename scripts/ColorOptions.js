@@ -1,3 +1,5 @@
+import { setColor } from "./TransientState.js"
+
 export const ColorOptions = async () => {
     const response = await fetch("http://localhost:8088/colors")
     const colors = await response.json()
@@ -24,7 +26,7 @@ export const ColorOptions = async () => {
 
 //Handles what happens when different metals are clicked    
 const handleColorChange = (changeEvent) => {
-    if (changeEvent.target.name === "color") {
-        setMetal(parseInt(changeEvent.target.value))
+    if (changeEvent.target.id === "color") {
+        setColor(parseInt(changeEvent.target.value))
     }
 }

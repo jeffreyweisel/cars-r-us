@@ -1,5 +1,6 @@
 import { ColorOptions } from "./ColorOptions.js"
 import { InteriorOptions } from "./InteriorOptions.js"
+import { Orders } from "./Orders.js"
 import { saveCustomPackage } from "./SaveOrders.js"
 import { TechnologyOptions } from "./TechnologyOptions.js"
 import { WheelOptions } from "./WheelOptions.js"
@@ -11,6 +12,7 @@ const render = async () => {
     const interiorOptionsHTML = await InteriorOptions()
     const wheelOptionsHTML = await WheelOptions()
     const buttonHTML = await saveCustomPackage()
+    const ordersHTML = await Orders()
     
     const composedHTML = `
         <h1>Cars R Us</h1>
@@ -43,7 +45,7 @@ const render = async () => {
 
         <article class="customOrders">
             <h2>Custom Car Orders</h2>
-                
+            ${ordersHTML}
         </article>
     `
 

@@ -28,7 +28,7 @@ export const TechnologyOptions = async () => {
 
 //Handles what happens when different metals are clicked    
 const handleTechnologyChange = (changeEvent) => {
-    if (changeEvent.target.name === "technology") {
+    if (changeEvent.target.id === "tech") {
         setTechnology(parseInt(changeEvent.target.value))
     }
 }

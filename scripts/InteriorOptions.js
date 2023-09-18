@@ -1,3 +1,5 @@
+import { setInterior } from "./TransientState.js"
+
 export const InteriorOptions = async () => {
     const response = await fetch("http://localhost:8088/interiors")
     const interiors = await response.json()
@@ -24,7 +26,7 @@ export const InteriorOptions = async () => {
 
 //Handles what happens when different metals are clicked    
 const handleInteriorChange = (changeEvent) => {
-    if (changeEvent.target.name === "interior") {
-        setMetal(parseInt(changeEvent.target.value))
+    if (changeEvent.target.id === "interior") {
+        setInterior(parseInt(changeEvent.target.value))
     }
 }
