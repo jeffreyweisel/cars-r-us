@@ -1,46 +1,52 @@
 // Set up the transient state data structure and provide initial values
 const transientState = {
-    "colorId": 0,
-    "technologyId": 0,
-    "wheelId": 0,
-    "interiorId": 0
-}
-
+  paintId: 0,
+  technologyId: 0,
+  wheelId: 0,
+  interiorId: 0,
+};
 
 // Functions to modify each property of transient state
 export const setColor = (chosenColor) => {
-    transientState.colorId = chosenColor
-    console.log(transientState)
-}
+  transientState.paintId = chosenColor;
+  console.log(transientState);
+};
 
 export const setTechnology = (chosenTechnology) => {
-    transientState.technologyId = chosenTechnology
-    console.log(transientState)
-}
+  transientState.technologyId = chosenTechnology;
+  console.log(transientState);
+};
 
 export const setWheel = (chosenWheel) => {
-    transientState.wheelId = chosenWheel
-    console.log(transientState)
-}
+  transientState.wheelId = chosenWheel;
+  console.log(transientState);
+};
 
 export const setInterior = (chosenInterior) => {
-    transientState.interiorId = chosenInterior
-    console.log(transientState)
-}
+  transientState.interiorId = chosenInterior;
+  console.log(transientState);
+};
 
-//Function that converts transient state to permanent state
+//Functions that convert transient state to permanent state
 export const saveCustomCarChoice = async () => {
-    const postOptions = {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(transientState)
-    }
+  const postOptions = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(transientState),
+  };
 
-    const response = await fetch("http://localhost:8088/orders", postOptions)
+  const response = await fetch("https://localhost:7105/orders", postOptions);
+  //create new custom event after response is received
+  //dispatches custom event created on document object
+  const customEvent = new CustomEvent("stateChange");
+  document.dispatchEvent(customEvent);
+};
 
-    const customEvent = new CustomEvent("newCustomCarChoiceAdded")
-    document.dispatchEvent(customEvent)
-
-}
+export const completeOrder = async (orderId) => {
+  await fetch(`https://localhost:7105/orders/${orderId}/fulfill`, {
+    method: "POST",
+  });
+  document.dispatchEvent(new CustomEvent("stateChange"));
+};

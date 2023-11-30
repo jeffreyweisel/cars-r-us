@@ -185,6 +185,13 @@
       "wheelId": 1,
       "interiorId": 1,
       "id": 14
+    },
+    {
+      "colorId": 2,
+      "technologyId": 1,
+      "wheelId": 4,
+      "interiorId": 2,
+      "id": 15
     }
   ]
 }
